@@ -15,13 +15,6 @@ get '/questions/new' do
   erb :'/questions/new_question'
 end
 
-get '/questions/:id' do
-  @question = Question.find_by(id: params[:id])
-  @answers = @question.answers
-  erb :'/questions/show'
-end
-
-
 post '/questions' do
   # current_user
   user = User.find(session[:user_id])
@@ -32,6 +25,29 @@ post '/questions' do
     erb :'/questions/new_question'
   end
 end
+
+get '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  @answers = @question.answers
+  erb :'/questions/show'
+end
+
+get '/questions/:id/edit' do
+  @question = Question.find(params[:id])
+  erb :'questions/edit'
+end
+
+put '/questions/:id' do
+  question = Question.find(params[:id])
+  question.update_attributes(params[:question])
+  if question.save
+    redirect "/questions/#{question.id}"
+  else
+    erb :'questions/edit'
+  end
+end
+
+
 
 delete '/questions/:id' do
   question = Question.find(params[:id])

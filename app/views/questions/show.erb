@@ -6,7 +6,7 @@
       <%=answer.response%>
       <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
       <input type="hidden" name="_method" value="Delete">
-      <input type="submit" value="Delete your question">
+      <input type="submit" value="Delete your Response">
       </form>
       <br>
     <%end%>
@@ -15,11 +15,12 @@
     <footer>
       <a href="/questions/<%=@question.id%>/answers/new">Reply</a>
       <br>
+      <a href="/questions/<%=@question.id%>/edit">Edit your post</a>
 
-      <form action= "/questions/<%=@question.id%>" method="post">
-      <input type="hidden" name="_method" value="Delete">
-      <input type="submit" value="Delete your question">
-      </form>
-
+      <br>
+        <form action= "/questions/<%=@question.id%>" method="post">
+        <input type="hidden" name="_method" value="Delete">
+        <input type="submit" value="Delete your question">
+        </form>
     </footer>
 </div>
