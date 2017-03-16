@@ -1,1 +1,25 @@
-<%= @user.username%>
+<div class="container">
+<h3>Welcome <%= @user.username%></h3>
+<h4>View all your questions</h4>
+
+<% @user.questions.each do |question| %>
+  <a href="/questions/<%=question.id%>"><%=question.title%></a><br>
+<% end %>
+
+</div>
+
+
+<div class="container">
+  <h3>View all your answers</h3>
+  <% @user.answers.each do |answer| %>
+    <a href="/questions/<%=answer.question_id%>/answers"><%=answer.response%></a><br>
+  <% end %>
+  </div>
+
+
+<div class="container">
+  <h3>View all your comments</h3>
+  <% @user.comments.each do |comment| %>
+    <a href="/questions/<%=comment.question_id%>/answers"><%=answer.response%></a><br>
+  <% end %>
+  </div>
