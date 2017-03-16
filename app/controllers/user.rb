@@ -36,5 +36,5 @@ end
 
 get '/logout' do
   session.clear
-  redirect '/questions/index'
+  redirect '/questions'
 end

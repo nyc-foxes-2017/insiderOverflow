@@ -6,3 +6,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
 end
+
+# answer = Answer.find(params[:id])
+# answer.comment << Comment.new(params[:comment])
