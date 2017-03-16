@@ -1,11 +1,46 @@
-20.times do
-  post = Post.create!( title: Faker::Company.catch_phrase,
-               username: Faker::Internet.user_name,
-               comment_count: rand(1000),
-               created_at: Time.now - rand(20000))
 
-  vote_count = rand(100)
-  vote_count.times do
-    post.votes.create!(value: 1)
-  end
+User.delete_all
+Question.delete_all
+Answer.delete_all
+Comment.delete_all
+Vote.delete_all
+
+
+User.create!({
+ :username => "test",
+ :email =>  "t@t.com",
+ :password => "password"
+ })
+
+
+10.times do (
+   user = User.create!({
+    :username => Faker::Internet.user_name,
+    :email =>  Faker::Internet.safe_email,
+    :password => Faker::Internet.password(8)
+    })
+
+  answer =  Answer.create!({
+      :response => Faker::Lorem.sentence,
+      :user_id => rand(1..10),
+      :question_id => rand(1..10)
+      })
+
+  question =  Question.create!({
+        :title => Faker::Name.title,
+        :body=> Faker::Lorem.sentence,
+        :user_id => rand(1..10),
+        })
+
+    Comment.create!({
+         :response=> Faker::Lorem.sentence,
+         :commentable_id => question.id,
+         :commentable_type => question.class
+         })
+
+    Vote.create!({
+         :votable_id => answer.id,
+         :votable_type => answer.class,
+         })
+)
 end
