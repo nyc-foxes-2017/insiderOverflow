@@ -3,13 +3,10 @@ get '/questions/:id/answers/new' do
   erb :'/answers/new'
 end
 
-
-
-
-post '/questions/:id/answers' do
+post '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   @answers = @question.answers
-  @answer = @question.answers.new(params[:answer])
+  @answer = @question.answers.new(response: params[:answer][:response], user_id: @question.user_id)
   if @answer.save
     erb :'/questions/show'
   else
