@@ -16,18 +16,25 @@ get '/questions/new' do
 end
 
 get '/questions/:id' do
-# should go to the show page
-  erb :'/answers'
+  @question = Question.find_by(id: params[:id])
+  @answers = @question.answers
+  erb :'/questions/show'
 end
 
 
 post '/questions' do
   # current_user
-  user = user.find(session[:user_id])
+  user = User.find(session[:user_id])
   question = user.questions.new(params[:question])
   if question.save
-    redirect "/questions/#{user.id}"
+    redirect "/questions/#{question.id}"
   else
     erb :'/questions/new_question'
   end
+end
+
+delete '/questions/:id' do
+  question = Question.find(params[:id])
+  question.destroy
+  redirect '/questions'
 end
