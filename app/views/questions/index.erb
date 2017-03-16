@@ -1,0 +1,12 @@
+<div class="container">
+  <header>
+    <h1>insiderOverflow</h1>
+  </header>
+
+   <div class="question-container">
+     <%@questions.each do |question|%>
+        <a href="/questions/<%question.id%>/answers"><%question.title%></a>
+     <%end%>
+   </div>
+
+</div>
