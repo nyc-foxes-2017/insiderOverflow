@@ -11,6 +11,7 @@ gem 'sinatra-contrib'
 gem 'thin'
 gem 'pry'
 gem 'pry-byebug'
+gem 'bcrypt'
 
 gem 'activesupport'
 gem 'activerecord'
