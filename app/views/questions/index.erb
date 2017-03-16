@@ -5,7 +5,7 @@
 
    <div class="question-container">
      <%@questions.each do |question|%>
-        <a href="/questions/<%question.id%>/answers"><%question.title%></a>
+        <a href="/questions/<%=question.id%>"><%=question.title%></a><br>
      <%end%>
    </div>
 
