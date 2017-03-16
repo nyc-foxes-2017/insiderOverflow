@@ -16,8 +16,18 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>insiderOverflow</title>
 </head>
+  <nav>
+    <a href="#">Home</a>|
+    <% if  current_user%>
+        <a href="/logout">Logout</a>
+        <a href="#">My Profile</a>
+        <% else %>
+          <a href="/login">Login</a>
+          <a href="/users/new">Create Profile</a>
+    <%end %>
+</nav>
 <body>
   <%= yield %>
 </body>
