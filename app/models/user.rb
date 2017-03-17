@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   validates :username, :email, presence: true
   validates :email, uniqueness: true, format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/}
+  validates :password, length: { in: 6..20 }
 end
 
 # answer = Answer.find(params[:id])
