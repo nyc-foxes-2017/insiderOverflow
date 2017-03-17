@@ -1,14 +1,17 @@
 <div class="show-page">
   <h2><%=@question.title%></h2>
-  <h4><%=@question.body%></h4>
+  <p>By: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
+  <p class="ques_body"><%=@question.body%></p>
 
   <%@answers.each do |answer|%>
     <div class="answer">
-     <p class="response"><%=answer.response%></p>
+     <span class="response"><%=answer.response%></span><br>
+     <p>By: <a href="/users/<%=answer.user_id%>"><%=answer.user.username%></a></p>
       <%answer.comments.each do |comment|%>
-      <p class="comment"><%=comment.response%></p>
+      <p class="margin"><span class="comment"><%=comment.response%></span></p>
+      <p class="margin"><span class="user_id_comment">By: <a href="/users/<%=comment.user_id%>"><%=User.find(comment.user_id).username%></a></span></p>
         <%end%>
-      <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
+      <form action="/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
       <input type="hidden" name="_method" value="Delete">
       <input type="submit" value="Delete your Response">
       </form>
