@@ -53,12 +53,12 @@ article {
   margin: 5px 5px;
 }
 
-article a.vote-button {
+/*article a.vote-button {
   color: #8C8C8C;
   text-decoration: none;
   display: inline;
   vertical-align: sub;
-}
+}*/
 
 
 article h2 {
@@ -123,17 +123,17 @@ form#posts input[type='text'] {
 
 }
 
-form#posts input[type='submit'] {
+/*form#posts input[type='submit'] {
   font-size: 10pt;
   margin-left: 5px;
   border-width: 1px;
   font-weight: bold;
   background-color: #F4712D;
-}
+}*/
 
-.inline {
+/*.inline {
   display: inline;
-}
+}*/
 
 .upvote-button {
   background-color: transparent;
@@ -174,3 +174,18 @@ nav {
   border-bottom: 1px dotted black;
 }
 
+#down-vote-button{
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid red;
+}
+
+#up-vote-button {
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 30px solid green;
+}
+
+#response{
+
+}

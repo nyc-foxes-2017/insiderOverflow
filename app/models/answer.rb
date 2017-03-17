@@ -11,4 +11,5 @@ class Answer < ActiveRecord::Base
     votes.sum(:value)
   end
 
+
 end

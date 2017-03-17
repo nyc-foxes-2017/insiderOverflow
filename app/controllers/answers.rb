@@ -24,6 +24,13 @@ post '/questions/:q_id/answers/:a_id/vote' do
   redirect "/questions/#{@question.id}"
 end
 
+post '/questions/:q_id/answers/:a_id/downvote' do
+  @question = Question.find(params[:q_id])
+  answer = Answer.find(params[:a_id])
+  answer.votes.create(value: -1)
+  redirect "/questions/#{@question.id}"
+end
+
 
 delete '/questions/:id/answers/:id' do
   require_login && current_user
