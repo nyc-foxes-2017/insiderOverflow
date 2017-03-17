@@ -1,22 +1,32 @@
 get '/questions' do
-  @questions = Question.all
+  @questions = Question.order(:created_at)
   erb :'questions/index'
 end
 
 
 get '/questions/new' do
   require_login
-  erb :'/questions/new_question'
+  erb :'/questions/new_question', layout: false
 end
 
 post '/questions' do
   require_login
   user = User.find(session[:user_id])
   question = user.questions.new(params[:question])
-  if question.save
-    redirect "/questions/#{question.id}"
+  questions = Question.all
+
+  if request.xhr?
+    if question.save
+      erb :"/partials/_question", layout: false, locals: {user: user, question: question, questions: questions}
+    else
+      redirect '/questions'
+    end
   else
-    erb :'/questions/new_question'
+    if question.save
+      redirect "/questions"
+    else
+      erb :'/questions/new_question'
+    end
   end
 end
 

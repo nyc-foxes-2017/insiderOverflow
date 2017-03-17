@@ -131,9 +131,9 @@ form#posts input[type='text'] {
   background-color: #F4712D;
 }*/
 
-/*.inline {
+.inline {
   display: inline;
-}*/
+}
 
 .upvote-button {
   background-color: transparent;
@@ -207,18 +207,23 @@ nav {
 
 
 #down-vote-button{
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 30px solid red;
+  height: 15px;
+  width: 15px;
+  background-color: red;
+
 }
 
 #up-vote-button {
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	border-bottom: 30px solid green;
+  height: 15px;
+  width: 15px;
+  background-color: green;
+
 }
 
 #response{
 
 }
 
+#questions_timestamp {
+  float: right;
+}
