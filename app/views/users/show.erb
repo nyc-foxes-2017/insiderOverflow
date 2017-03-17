@@ -16,6 +16,7 @@
 <div class="container">
   <h3>All answers</h3>
   <% @user.answers.each do |answer| %>
+  Points: <%= answer.points %>
     <a href="/questions/<%=answer.question_id%>/answers"><%=answer.response%></a><br>
   <% end %>
   </div>
