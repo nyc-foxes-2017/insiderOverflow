@@ -1,5 +1,7 @@
 <div class="show-page">
   <h2><%=@question.title%></h2>
+  <p>Created at: <%= @question.created_at.to_s[0..9] %></p>
+
   <p>By: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
   <p class="ques_body"><%=@question.body%></p>
 
@@ -11,14 +13,14 @@
       <button id="up-vote-button" type="submit" value="submit_value" class="vote-button"></button>
       </form>
       <%end %>
-        votes: <%=answer.points %>
         <% if current_user %>
       <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/downvote" class="inline">
       <button id="down-vote-button" type="submit"  class="vote-button"></button>
       </form>
+      votes: <%=answer.points %>
       <% end %>
 
-     <span class="response"><%=answer.response%></span><br>
+     <span class="response"> | <%=answer.response%></span><br>
      <p>By: <a href="/users/<%=answer.user_id%>"><%=answer.user.username%></a></p>
       <%answer.comments.each do |comment|%>
       <p class="margin"><span class="comment"><%=comment.response%></span></p>
