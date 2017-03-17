@@ -1,6 +1,10 @@
 <div class="container">
-<h3>Welcome <%= @user.username%></h3>
-<h4>View all your questions</h4>
+  <% if owner? %>
+    <h3>Welcome <%= @user.username%></h3>
+    <%else%>
+    <h3><%= @user.username%>'s questions</h3>
+  <% end %>
+  <h4>View all questions</h4>
 
 <% @user.questions.each do |question| %>
   <a href="/questions/<%=question.id%>"><%=question.title%></a><br>
@@ -10,7 +14,7 @@
 
 
 <div class="container">
-  <h3>View all your answers</h3>
+  <h3>All answers</h3>
   <% @user.answers.each do |answer| %>
     <a href="/questions/<%=answer.question_id%>/answers"><%=answer.response%></a><br>
   <% end %>
@@ -18,7 +22,7 @@
 
 
 <div class="container">
-  <h3>View all your comments</h3>
+  <h3>View comments</h3>
   <% @user.comments.each do |comment| %>
     <a href="/questions/<%=comment.question_id%>/answers"><%=answer.response%></a><br>
   <% end %>

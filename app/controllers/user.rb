@@ -14,8 +14,8 @@ post '/users' do
 end
 
 get '/users/:id' do
+  require_login
   @user = User.find_by(id: params[:id])
-  #create logic to show questions & answers
   erb :'/users/show'
 end
 

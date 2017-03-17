@@ -11,12 +11,12 @@ end
 
 
 get '/questions/new' do
-  # current_user
+  require_login
   erb :'/questions/new_question'
 end
 
 post '/questions' do
-  # current_user
+  require_login
   user = User.find(session[:user_id])
   question = user.questions.new(params[:question])
   if question.save
@@ -33,11 +33,13 @@ get '/questions/:id' do
 end
 
 get '/questions/:id/edit' do
+  current_user
   @question = Question.find(params[:id])
   erb :'questions/edit'
 end
 
 put '/questions/:id' do
+  require_login
   question = Question.find(params[:id])
   question.update_attributes(params[:question])
   if question.save
@@ -47,9 +49,8 @@ put '/questions/:id' do
   end
 end
 
-
-
 delete '/questions/:id' do
+  require_login && current_user
   question = Question.find(params[:id])
   question.destroy
   redirect '/questions'
