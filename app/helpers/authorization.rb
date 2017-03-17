@@ -3,5 +3,13 @@ def current_user
 end
 
 def require_login
-  redirect '/login' unless current user
+  redirect '/login' unless current_user
+end
+
+def login?
+  !!@current_user
+end
+
+def owner?
+  current_user.id == Question.find_by(id: params[:id]).user_id
 end
