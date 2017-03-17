@@ -6,7 +6,7 @@ end
 post '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   @answers = @question.answers
-  @answer = @question.answers.new(response: params[:answer][:response], user_id: @question.user_id)
+  @answer = @question.answers.new(response: params[:answer][:response], user_id: session[:user_id])
   if @answer.save
     erb :'/questions/show'
   else
