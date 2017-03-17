@@ -1,8 +1,11 @@
 <div class="container">
     <%= erb :"/partials/_errors" %>
     <form class="" action="/login" method="post">
+      <label for="email">Email</label><br>
       <input type="email" name="email" placeholder="name@gmail.com" required><br>
+      <label for="password">Password</label><br>
       <input type="password" name="password" placeholder="password"><br>
       <input type="submit"  value="Login">
     </form>
+    <p> Don't have an account? <a href='/users/new' class="blue">Sign up</a></p>
 </div>

@@ -18,16 +18,20 @@
 
   <title>insiderOverflow</title>
 </head>
-  <nav>
+  <header id="header-overflow">
+    <a href="/questions"><img src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a"id="logo"><h1><small id="small-text">insider</small>Overflow</h1></a>
+    <nav>
     <a href="/questions">Home</a>|
     <% if  current_user%>
-        <a href="/logout">Logout</a>
-        <a href="#">My Profile</a>
+        <a href="/logout">Logout</a> |
+        <a href="/users/<%=session[:user_id]%>">My Profile</a>
         <% else %>
-          <a href="/login">Login</a>
-          <a href="/users/new">Create Profile</a>
+          <a href="/login">Login</a> |
+          <input type="button" onclick="location.href='/users/new';" value="Create Profile" class="button" />
     <%end %>
-</nav>
+  </nav>
+  </header>
+
 <body>
   <%= yield %>
 </body>
