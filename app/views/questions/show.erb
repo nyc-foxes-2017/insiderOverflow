@@ -1,9 +1,11 @@
 <div class="show-page">
+  <div id="question">
   <h2><%=@question.title%></h2>
   <p>Created at: <%= @question.created_at.to_s[0..9] %></p>
 
   <p>By: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
   <p class="ques_body"><%=@question.body%></p>
+</div>
 
 
   <%@answers.each do |answer|%>

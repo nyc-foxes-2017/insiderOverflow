@@ -1,18 +1,17 @@
-
-
-   <div class="question-container">
+  <div class="question-container">
     <h2>Top Questions</h2>
+    <div class="all-questions">
      <%@questions.each do |question|%>
 
       <div class="question">
         <a href="/questions/<%=question.id%>"><%=question.title%></a> By: <a href="users/<%=User.find(question.user_id).id%>"><%=User.find(question.user_id).username%></a><br>
         <p id="questions_timestamp">Created at: <%= question.created_at.to_s[0..9] %></p>
-
       </div>
      <%end%>
-     <div>
+   </div>
+     <div class="question-link">
       <% if current_user %>
-      <a href="/questions/new">Create a new question</a>
+      <a id="new-question" href="/questions/new">Create a new question</a>
       <% end %>
      </div>
    </div>
