@@ -10,8 +10,18 @@ def login?
   !!@current_user
 end
 
+
 def owner?
-  current_user.id == Question.find_by(id: params[:id]).user_id
+  #for questions ONLY
+  current_user.id == Question.find_by(id: params[:q_id]).user_id
+end
+
+def owner_answer?
+  current_user.id == Answer.find_by(id: params[:a_id]).user_id
+end
+
+def owner_response?
+
 end
 
 def voted?(user)
