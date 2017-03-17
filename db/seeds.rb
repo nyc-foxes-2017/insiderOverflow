@@ -32,15 +32,17 @@ User.create!({
         :user_id => rand(1..10),
         })
 
-    Comment.create!({
-         :response=> Faker::Lorem.sentence,
-         :commentable_id => question.id,
-         :commentable_type => question.class
-         })
+     Comment.create!({
+          :response=> Faker::Lorem.sentence,
+          :commentable_id => question.id,
+          :commentable_type => question.class,
+          :user_id => rand(0..User.all.count)
+          })
 
-    Vote.create!({
-         :votable_id => answer.id,
-         :votable_type => answer.class,
-         })
+     Vote.create!({
+          :votable_id => answer.id,
+          :votable_type => answer.class,
+          :user_id => rand(0..User.all.count)
+          })
 )
 end

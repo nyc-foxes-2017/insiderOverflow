@@ -3,6 +3,7 @@ class CreateVotesTable < ActiveRecord::Migration
     create_table :votes do |t|
       t.integer  :votable_id
       t.integer :value, default: 0
+      t.references :user, null: false
 
       t.timestamps
     end

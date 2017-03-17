@@ -174,6 +174,38 @@ nav {
   border-bottom: 1px dotted black;
 }
 
+
+.ques_body{
+  font-size: 19px;
+  padding-left: 10px;
+}
+
+.answer {
+  padding: 20px 50px;
+}
+.answer span.response {
+  background-color: #cccccc;
+  font-size: 17px;
+}
+
+.answer span.comment {
+  background-color: #e6e6e6;
+  font-size: 14px;
+  margin-left: 35px ;
+}
+
+.answer span.user_id_comment.a {
+  color: red;
+  background-color: #e6e6e6;
+  font-size: 10px;
+  margin-left: 35px ;
+}
+
+.answer p.margin {
+  margin-top: 5px;
+}
+
+
 #down-vote-button{
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
@@ -189,3 +221,4 @@ nav {
 #response{
 
 }
+
