@@ -1,9 +1,3 @@
-
-# before '/question/:id/*' do
-#   # current_user
-#   @question = Question.find_by(id: params[:id])
-# end
-
 get '/questions' do
   @questions = Question.all
   erb :'questions/index'

@@ -1,5 +1,5 @@
 <div class="container">
-  <% if owner? %>
+  <% if current_user && owner? %>
     <h3>Welcome <%= @user.username%></h3>
     <%else%>
     <h3><%= @user.username%>'s questions</h3>
