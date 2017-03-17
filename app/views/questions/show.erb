@@ -2,15 +2,23 @@
   <h2><%=@question.title%></h2>
   <h4><%=@question.body%></h4>
 
-  <p><%@answers.each do |answer|%>
-      <%=answer.response%>
+  <%@answers.each do |answer|%>
+    <div class="answer">
+     <p class="response"><%=answer.response%></p>
+      <%answer.comments.each do |comment|%>
+      <p class="comment"><%=comment.response%></p>
+        <%end%>
       <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
       <input type="hidden" name="_method" value="Delete">
       <input type="submit" value="Delete your Response">
       </form>
       <br>
+      <a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/new">Add a comment</a><br>
+      <hr width="85%">
+
+    </div>
     <%end%>
-    </p>
+
 
     <footer>
       <a href="/questions/<%=@question.id%>/answers/new">Reply</a>
