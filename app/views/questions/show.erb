@@ -3,7 +3,14 @@
   <h4><%=@question.body%></h4>
 
   <p><%@answers.each do |answer|%>
-      <%=answer.response%>
+
+        <%=answer.response%>
+        <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/vote" class="inline">
+        <button type="submit" value="submit_value"</button>
+         Points:<%=answer.points %>
+        </form>
+
+
       <%if current_user && owner?%>
         <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
           <input type="hidden" name="_method" value="Delete">
