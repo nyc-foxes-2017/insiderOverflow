@@ -19,15 +19,25 @@ end
 
 post '/questions/:q_id/answers/:a_id/vote' do
   @question = Question.find(params[:q_id])
-  answer = Answer.find(params[:a_id])
-  answer.votes.create(value: 1, user_id: session[:user_id])
+  @answer = Answer.find(params[:a_id])
+  user = User.find(session[:user_id])
+  if vote_happpend?
+    @error = ["You already voted"]
+  else
+    @answer.votes.create(value: 1, user_id: session[:user_id])
+  end
   redirect "/questions/#{@question.id}"
 end
 
 post '/questions/:q_id/answers/:a_id/downvote' do
   @question = Question.find(params[:q_id])
-  answer = Answer.find(params[:a_id])
-  answer.votes.create(value: -1, user_id: session[:user_id])
+  @answer = Answer.find(params[:a_id])
+  user = User.find(session[:user_id])
+  if vote_happpend?
+    @error = ["You already voted"]
+  else
+  @answer.votes.create(value: -1, user_id: session[:user_id])
+  end
   redirect "/questions/#{@question.id}"
 end
 

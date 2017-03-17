@@ -25,5 +25,12 @@ def owner_response?
 end
 
 def voted?(user)
-  self.points.find_by(id: user.id) ? true : false
+  user.votes == 1 ? true : false
+end
+
+def vote_happpend?
+  voted = @answer.votes.find do |vote|
+    vote.user_id == session[:user_id]
+  end
+  voted ? true : false
 end
