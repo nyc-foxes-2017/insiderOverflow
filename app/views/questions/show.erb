@@ -3,6 +3,7 @@
   <p>By: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
   <p class="ques_body"><%=@question.body%></p>
 
+
   <%@answers.each do |answer|%>
     <div class="answer">
      <span class="response"><%=answer.response%></span><br>
@@ -14,6 +15,24 @@
       <form action="/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
       <input type="hidden" name="_method" value="Delete">
       <input type="submit" value="Delete your Response">
+
+  <p><%@answers.each do |answer|%>
+        <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/vote" class="inline">
+        <button id="up-vote-button" type="submit" value="submit_value" class="vote-button"></button>
+        </form>
+           <%=answer.points %>   <p id="response"> <%=answer.response%></p>
+        <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/downvote" class="inline">
+        <button id="down-vote-button" type="submit"  class="vote-button"></button>
+        </form>
+
+
+
+      <%if current_user && owner?%>
+        <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
+          <input type="hidden" name="_method" value="Delete">
+          <input type="submit" value="Delete your Response">
+      <%end%>
+
       </form>
       <br>
       <a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/new">Add a comment</a><br>
@@ -24,14 +43,19 @@
 
 
     <footer>
-      <a href="/questions/<%=@question.id%>/answers/new">Reply</a>
+      <%if current_user %>
+        <a href="/questions/<%=@question.id%>/answers/new">Reply</a>
+      <% end %>
       <br>
-      <a href="/questions/<%=@question.id%>/edit">Edit your post</a>
-
+        <%if current_user && owner? %>
+        <a href="/questions/<%=@question.id%>/edit">Edit your post</a>
+        <% end %>
       <br>
-        <form action= "/questions/<%=@question.id%>" method="post">
-        <input type="hidden" name="_method" value="Delete">
-        <input type="submit" value="Delete your question">
-        </form>
+        <%if current_user && owner?%>
+          <form action= "/questions/<%=@question.id%>" method="post">
+            <input type="hidden" name="_method" value="Delete">
+            <input type="submit" value="Delete your question">
+          </form>
+        <%end %>
     </footer>
 </div>
