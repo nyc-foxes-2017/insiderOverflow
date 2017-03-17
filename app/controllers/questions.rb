@@ -20,21 +20,21 @@ post '/questions' do
   end
 end
 
-get '/questions/:id' do
-  @question = Question.find_by(id: params[:id])
+get '/questions/:q_id' do
+  @question = Question.find_by(id: params[:q_id])
   @answers = @question.answers
   erb :'/questions/show'
 end
 
-get '/questions/:id/edit' do
+get '/questions/:q_id/edit' do
   current_user
-  @question = Question.find(params[:id])
+  @question = Question.find(params[:q_id])
   erb :'questions/edit'
 end
 
-put '/questions/:id' do
+put '/questions/:q_id' do
   require_login
-  question = Question.find(params[:id])
+  question = Question.find(params[:q_id])
   question.update_attributes(params[:question])
   if question.save
     redirect "/questions/#{question.id}"
@@ -43,9 +43,9 @@ put '/questions/:id' do
   end
 end
 
-delete '/questions/:id' do
+delete '/questions/:q_id' do
   require_login && current_user
-  question = Question.find(params[:id])
+  question = Question.find(params[:q_id])
   question.destroy
   redirect '/questions'
 end

@@ -1,4 +1,5 @@
 get "/questions/:q_id/answers/:a_id/comments/new" do
+  require_login
   @question = Question.find(params[:q_id])
   @answer = Answer.find(params[:a_id])
   erb :'/comments/new'

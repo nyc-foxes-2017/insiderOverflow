@@ -1,5 +1,5 @@
 <div class="container">
-  <% if current_user && owner? %>
+  <% if current_user %>
     <h3>Welcome <%= @user.username%></h3>
     <%else%>
     <h3><%= @user.username%>'s questions</h3>
@@ -17,7 +17,7 @@
   <h3>All answers</h3>
   <% @user.answers.each do |answer| %>
   Points: <%= answer.points %>
-    <a href="/questions/<%=answer.question_id%>/answers"><%=answer.response%></a><br>
+    <a href="/questions/<%=answer.question_id%>"><%=answer.response%></a><br>
   <% end %>
   </div>
 
