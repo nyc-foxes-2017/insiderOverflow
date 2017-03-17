@@ -1,12 +1,17 @@
-<div class="container">
-  <header>
-    <h1>insiderOverflow</h1>
-  </header>
+
 
    <div class="question-container">
+    <h2>Top Questions</h2>
      <%@questions.each do |question|%>
-        <a href="/questions/<%=question.id%>"><%=question.title%></a><br>
+      <div class="question">
+        <a href="/questions/<%=question.id%>"><%=question.title%></a> By: <a href="users/<%=User.find(question.user_id).id%>"><%=User.find(question.user_id).username%><br>
+
+      </div>
      <%end%>
+     <div>
+      <% if current_user %>
+      <a href="/questions/new">Create a new question</a>
+      <% end %>
+     </div>
    </div>
 
-</div>

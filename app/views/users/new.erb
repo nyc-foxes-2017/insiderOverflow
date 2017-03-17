@@ -2,8 +2,11 @@
   <%= erb :"/partials/_errors" %>
   <h3>Create a Profile</h3>
     <form class="" action="/users" method="post">
+      <label for="username">Username</label><br>
       <input type="text" name="user[username]" placeholder="username" required><br>
+      <label for="email">Email</label><br>
       <input type="email" name="user[email]" placeholder="name@gmail.com" required><br>
+      <label for="password">Password</label><br>
       <input type="password" name="user[password]" placeholder="password"><br>
       <input type="submit"  value="Register">
     </form>
