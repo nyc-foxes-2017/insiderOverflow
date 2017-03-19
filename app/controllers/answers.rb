@@ -2,7 +2,11 @@ get '/questions/:q_id/answers/new' do
   require_login
 
   @question = Question.find(params[:q_id])
-  erb :'/answers/new'
+  if request.xhr?
+    erb :'/answers/new', layout: false
+  else
+    erb :'/answers/new'
+  end
 end
 
 post '/questions/:q_id' do
