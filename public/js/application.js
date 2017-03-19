@@ -39,8 +39,9 @@ $(document).ready(function() {
 
   })
 
-  $('.new-answer-container').on('submit', '#submit-button', function(event){
+  $('.answer-container').on('submit', '#new-answer-form', function(event){
     event.preventDefault();
-    debugger
+
   })
+
 });

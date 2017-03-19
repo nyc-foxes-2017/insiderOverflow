@@ -17,6 +17,7 @@ post '/questions/:q_id' do
   if @answer.save
     erb :'/questions/show'
   else
+    @errors = @answer.errors.full_messages
     erb :'/answers/new'
   end
 end
