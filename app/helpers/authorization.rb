@@ -34,3 +34,7 @@ def vote_happpend?
   end
   voted ? true : false
 end
+
+def count_votes(object)
+  object.votes.inject(0) {|sum, vote| sum + vote.value }
+end
