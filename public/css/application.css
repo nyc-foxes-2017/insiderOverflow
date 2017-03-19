@@ -206,14 +206,14 @@ nav {
 }
 
 
-#down-vote-button{
+.down-vote-button {
   height: 15px;
   width: 15px;
   background-color: red;
 
 }
 
-#up-vote-button {
+.up-vote-button {
   height: 15px;
   width: 15px;
   background-color: green;

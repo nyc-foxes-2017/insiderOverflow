@@ -11,15 +11,15 @@
   <%@answers.each do |answer|%>
     <div class="answer">
       <% if current_user %>
-      <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/vote" class="inline">
-      <button id="up-vote-button" type="submit" value="submit_value" class="vote-button"></button>
+      <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/vote" class="inline upform">
+      <button class="up-vote-button" class="upvote" type="submit" value="submit_value" class="vote-button"></button>
       </form>
       <%end %>
         <% if current_user %>
-      <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/downvote" class="inline">
-      <button id="down-vote-button" type="submit"  class="vote-button"></button>
+      <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/downvote" class="inline downform">
+      <button class="down-vote-button" class="downvote" type="submit"  class="vote-button"></button>
       </form>
-      votes: <%=answer.points %>
+      <p class="votes">votes: <%=answer.points %></p>
       <% end %>
 
      <span class="response"> | <%=answer.response%></span><br>
