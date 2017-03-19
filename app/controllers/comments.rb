@@ -17,6 +17,7 @@ post '/questions/:q_id/answers/:a_id' do
     @answer.comments << comment
     erb :"/questions/show"
   else
+    @errors = comment.errors.full_messages
     erb :"/comments/new"
   end
 end
