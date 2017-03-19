@@ -1,4 +1,5 @@
 <div class="question">
   <a href="/questions/<%=question.id%>"><%=question.title%></a> By: <a href="users/<%=User.find(question.user_id).id%>"><%=User.find(question.user_id).username%></a><br>
-  <p id="questions_timestamp">Created at: <%= question.created_at.to_s[0..9] %></p>
+  <p id="questions_timestamp"><%= "Created on #{long_form_date(question.created_at)}." %></p><br>
+  <p><%= "Updated #{time(question.created_at)}." %></p>
 </div>
