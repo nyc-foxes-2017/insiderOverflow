@@ -1,11 +1,11 @@
 <div class="new-answer-container">
-  <form class="" action="/questions/<%=@question.id%>" method="post" id="new-answer-form">
-    <div class="answer-form">
-      <label for="title">Reply:</label><br>
-      <textarea rows="6" cols="60" name="answer[response]" form="new-answer-form">
-      </textarea><br>
-      <input id="submit-button" type="submit" value="Submit">
-    </div>
-  </form>
-
+  <%= erb :"/partials/_errors" %>
+  <div class="answer-form">
+    <form class="form" action="/questions/<%=@question.id%>" method="post" id="new-answer-form">
+        <label for="title">Reply:</label><br>
+        <textarea rows="6" cols="60" name="answer[response]" form="new-answer-form">
+        </textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+  </div>
 </div>
