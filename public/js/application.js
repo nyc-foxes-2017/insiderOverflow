@@ -26,9 +26,21 @@ $(document).ready(function() {
 
     })
   })
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#response').on('click', '#reply_click', function(event){
+    event.preventDefault();
+    var $url = $(this).attr('href')
+    $.ajax({
+      url: $url
+    }).done(function(response){
+      $("#response").append(response)
+      $('#reply_click').hide()
+    })
+
+  })
+
+  $('.new-answer-container').on('submit', '#submit-button', function(event){
+    event.preventDefault();
+    debugger
+  })
 });

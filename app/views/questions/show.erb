@@ -50,8 +50,10 @@
 
     <footer>
       <%if current_user %>
-        <a href="/questions/<%=@question.id%>/answers/new">Reply</a>
+      <div  id="response" class="container">
+        <a id="reply_click" href="/questions/<%=@question.id%>/answers/new">Reply</a>
       <% end %>
+    </div>
       <br>
         <%if current_user && owner? %>
         <a href="/questions/<%=@question.id%>/edit">Edit your post</a>
