@@ -23,7 +23,7 @@
     </div>
 
       <%if current_user%>
-        <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
+        <form class="delete-button" action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
           <% if owner? %>
           <input type="hidden" name="_method" value="Delete">
           <input type="submit" value="Delete your Response">
