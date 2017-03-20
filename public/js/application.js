@@ -27,6 +27,37 @@ $(document).ready(function() {
     })
   })
 
+  $(document).on('click', '.new_comment', function(event){
+    event.preventDefault()
+    var current = $(this)
+    var url = current.attr('href')
+
+    $.ajax({
+      url: url,
+      method: 'get'
+    }).done(function(response){
+      current.parent().find('.comments').append(response)
+      current.parent().find('.new_comment').hide()
+    })
+  })
+
+  $(document).on('submit','.new_comment_form', function(event){
+    event.preventDefault()
+    var current = $(this)
+    var url = current.attr('action')
+    var method = current.attr('method')
+    var data = current.serialize()
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    }).done(function(response){
+      current.closest('.comments').append(response)
+      current.hide()
+      $('.new_comment').show()
+    })
+  } )
+
   $('#response').on('click', '#reply_click', function(event){
     event.preventDefault();
     var $url = $(this).attr('href')
@@ -39,9 +70,40 @@ $(document).ready(function() {
 
   })
 
-  $('.answer-container').on('submit', '#new-answer-form', function(event){
+  $(document).on('submit', '#new-answer-form', function(event){
     event.preventDefault();
+    var current = $(this)
+    var url = current.attr('action')
+    var method = current.attr('method')
+    var data = current.serialize()
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    }).done(function(response){
+      $('footer').before(response)
+      $(current).hide()
+      $('#reply_click').show()
+    })
 
   })
+
+  $(document).on('submit', '.delete-button', function(event){
+    event.preventDefault();
+    var current = $(this)
+    var url = current.attr('action')
+    var method = current.attr('method')
+    var data = current.serialize()
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    }).done(function(response){
+      current.parent().hide()
+    })
+
+  })
+
 
 });

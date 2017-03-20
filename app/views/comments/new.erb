@@ -1,5 +1,5 @@
 <div class="new-comment-container">
-  <form class="" action="/questions/<%=@question.id%>/answers/<%=@answer.id%>" method="post" id="new-comment-form">
+  <form class="new_comment_form" action="/questions/<%=@question.id%>/answers/<%=@answer.id%>" method="post" id="new-comment-form">
     <div class="comment-form">
       <label for="title">Reply:</label><br>
       <textarea rows="6" cols="60" name="comment[response]" form="new-comment-form">
@@ -7,5 +7,4 @@
       <input type="submit" value="Submit">
     </div>
   </form>
-
 </div>
