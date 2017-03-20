@@ -1,0 +1,40 @@
+<div class="answer">
+      <% if current_user %>
+      <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/vote" class="inline upform">
+      <button class="up-vote-button" class="upvote" type="submit" value="submit_value" class="vote-button"></button>
+      </form>
+      <%end %>
+        <% if current_user %>
+      <form method="post" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/downvote" class="inline downform">
+      <button class="down-vote-button" class="downvote" type="submit"  class="vote-button"></button>
+      </form>
+      <p class="votes">votes: <%=answer.points %></p>
+      <% end %>
+
+     <span class="response"> | <%=answer.response%></span><br>
+     <p>By: <a href="/users/<%=answer.user_id%>"><%=answer.user.username%></a></p>
+      <div class="comments">
+      <%answer.comments.each do |comment|%>
+      <div class="comment"
+      <p class="margin"><span class="comment"><%=comment.response%></span></p>
+      <p class="margin"><span class="user_id_comment">By: <a href="/users/<%=comment.user_id%>"><%=User.find(comment.user_id).username%></a></span></p>
+    </div>
+        <%end%>
+    </div>
+
+      <%if current_user%>
+        <form action= "/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post">
+          <% if owner? %>
+          <input type="hidden" name="_method" value="Delete">
+          <input type="submit" value="Delete your Response">
+          <% end %>
+      <%end%>
+
+      </form>
+      <br>
+      <% if current_user  %>
+        <a class="new_comment" href="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/new">Add a comment</a><br>
+        <hr width="85%">
+      <% end %>
+
+    </div>
