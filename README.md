@@ -37,25 +37,25 @@ ___
 In your terminal do the following:
 
 Clone repo in your terminal
-1. git clone https://github.com/LM-Towner/insiderOverflow.git
+* git clone https://github.com/LM-Towner/insiderOverflow.git
 
-Change directory into the insiderOverFlow directory
-2. cd insiderOverFlow
+* Change directory into the insiderOverFlow directory
+ cd insiderOverFlow
 
-Install necessary gems
-3. bundle install
-if you do not have the bundler gem installed, type gem install bundler, then try bundle install again
+* Install necessary gems
+bundle install
+(if you do not have the bundler gem installed, type gem install bundler, then try bundle install again)
 
-Setup environment, creating and migrating the data into the database
-4. bundle exec rake db:reset
+* Setup environment, creating and migrating the data into the database
+bundle exec rake db:reset
 
-Seed the database with dummy data
-5. bundle exec rake db:seed
+* Seed the database with dummy data
+bundle exec rake db:seed
 
-Start server
-6. shotgun
+* Start server
+shotgun
 
-Navigate to your favorite web browser and type:
-7. localhost:9393
+* Navigate to your favorite web browser and type:
+localhost:9393
 
 Enjoy!
